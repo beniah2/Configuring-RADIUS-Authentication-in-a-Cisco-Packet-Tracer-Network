@@ -72,5 +72,113 @@ This ensures user devices and admin devices remain isolated.
 
 ---
 
+## Step 4. Configure trunk link to the router
+
+I configured the switch port connected to the router as a trunk.
+
+• interface fa0/9
+• switchport mode trunk
+• exit
+
+This allows multiple VLANs to pass between the switch and router.
+
+<img width="1009" height="188" alt="image" src="https://github.com/user-attachments/assets/47471d88-7a20-4a88-b790-977525c10b5d" />
+
+
+---
+
+## Step 5. Configure router on a stick
+
+I enabled inter VLAN routing using router subinterfaces.
+
+For VLAN 10.
+
+• interface g0/0.10
+• encapsulation dot1Q 10
+• ip address 192.168.10.1 255.255.255.0
+
+For VLAN 20.
+
+• interface g0/0.20
+• encapsulation dot1Q 20
+• ip address 192.168.20.1 255.255.255.0
+
+Then I enabled the physical interface.
+
+• interface fa0/0
+• no shutdown
+
+This allowed devices in different VLANs to communicate.
+
+
+<img width="1042" height="901" alt="image" src="https://github.com/user-attachments/assets/ee6a4c7b-11c8-4c79-b9c7-1086f0025847" />
+
+---
+
+## Step 6. Configure the RADIUS server
+
+I configured centralized authentication on the server.
+
+Steps I followed on the server.
+
+• Opened the Server device
+• Went to Services
+• Selected AAA
+• Enabled AAA and RADIUS
+
+I added the router as a network client.
+
+Network entry.
+
+• Client Name: Router
+• Client IP: 192.168.20.1
+• Secret: Cisco123
+• Server Type: RADIUS
+
+I then added a user.
+
+User entry.
+
+• Username: admin
+• Password: strongpassword12345
+
+
+<img width="1045" height="1000" alt="image" src="https://github.com/user-attachments/assets/c761f0b3-ac15-45dc-8809-02232142e7e5" />
+
+---
+
+## Step 7. Enable AAA on the router
+
+I enabled the AAA framework.
+
+• aaa new-model
+
+This allowed the router to use external authentication methods.
+
+<img width="1037" height="86" alt="image" src="https://github.com/user-attachments/assets/3199790b-eee6-43ac-86cd-f70de370f83b" />
+
+---
+## Step 8. Configure RADIUS authentication methods
+
+I forced the router to use RADIUS for login authentication.
+
+• aaa authentication login default group radius
+
+I also protected privileged EXEC mode.
+
+• aaa authentication enable default group radius
+
+This ensured both login and enable access were validated by the RADIUS server.
+
+<img width="1031" height="35" alt="image" src="https://github.com/user-attachments/assets/9d6030cf-7290-4a0c-a929-1cbc19481e62" />
+
+
+---
+
+
+
+
+
+
 
 
