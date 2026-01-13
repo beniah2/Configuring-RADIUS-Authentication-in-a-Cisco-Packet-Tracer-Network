@@ -212,4 +212,34 @@ This account works only if the RADIUS server is unreachable.
 
 <img width="1034" height="306" alt="image" src="https://github.com/user-attachments/assets/d961e8e9-548a-4fd4-b5f3-e550753c3bec" />
 
+---
+
+Step 12. Verify authentication
+
+I tested authentication from a client device.
+
+## Steps I followed.
+
+• Opened a laptop terminal
+• Typed telnet 192.168.20.1
+• Entered RADIUS credentials
+
+Expected results.
+
+• Correct credentials, login successful
+• Wrong credentials, access denied
+• RADIUS offline, local admin login works
+
+
+---
+
+## Key outcomes of this lab.
+
+• I implemented VLAN segmentation
+• I enabled inter VLAN routing
+• I deployed centralized RADIUS authentication
+• I enforced AAA on remote access
+• I validated secure login using Telnet
+
+This completes the AAA and RADIUS configuration lab in Cisco Packet Tracer.
 
