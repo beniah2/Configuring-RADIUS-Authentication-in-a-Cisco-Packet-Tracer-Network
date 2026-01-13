@@ -175,10 +175,41 @@ This ensured both login and enable access were validated by the RADIUS server.
 
 ---
 
+## Step 9. Define the RADIUS server on the router
 
+I pointed the router to the RADIUS server.
 
+• radius-server host 192.168.20.3 key Cisco123
 
+This shared secret must match the one configured on the server.
 
+<img width="1022" height="861" alt="image" src="https://github.com/user-attachments/assets/cd1f46a0-bebd-40e5-86b3-c29faa998e21" />
 
+---
+
+## Step 10. Apply AAA to VTY lines
+
+I applied AAA authentication to remote access lines.
+
+• line vty 0 4
+• login authentication default
+• transport input telnet
+• exit
+
+This enforced RADIUS authentication for all Telnet sessions.
+
+<img width="1038" height="291" alt="image" src="https://github.com/user-attachments/assets/4a9be9fa-95c7-4c47-ac49-f92af5f6d7b4" />
+
+---
+
+## Step 11. Configure local fallback user
+
+I created a local admin account for emergency access.
+
+• username admin secret Cisco123
+
+This account works only if the RADIUS server is unreachable.
+
+<img width="1034" height="306" alt="image" src="https://github.com/user-attachments/assets/d961e8e9-548a-4fd4-b5f3-e550753c3bec" />
 
 
