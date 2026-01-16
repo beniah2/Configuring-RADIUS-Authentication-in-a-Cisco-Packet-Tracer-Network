@@ -243,3 +243,6 @@ Expected results.
 
 This completes the AAA and RADIUS configuration lab in Cisco Packet Tracer.
 
+<img width="1920" height="1018" alt="image" src="https://github.com/user-attachments/assets/6a747388-e7d9-4000-b4b6-af8748df200f" />
+
+
